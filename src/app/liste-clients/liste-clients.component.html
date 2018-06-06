@@ -1,0 +1,10 @@
+<h2 i18n="@@titreListeClient">Customers</h2>
+<mat-nav-list>
+  <mat-list-item *ngFor="let client of clients | slice:0:50">
+    <a [routerLink]="[ '/clients', client.id ]">
+      {{client.prenom | capitalize}} {{client.nom | uppercase}}</a>
+  </mat-list-item>
+</mat-nav-list>
+
+
+

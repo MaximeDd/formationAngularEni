@@ -1,0 +1,17 @@
+<header>
+  <mat-toolbar color="accent">
+    <a routerLink="/clients" mat-button>Liste clients</a>
+    <a routerLink="/clients/add" mat-button>Nouveau client</a>
+    <span class="fill-space"></span>
+    <span>{{nom}}</span>
+    <span (click)="onSignOut()" [hidden]="!estConnecte">
+    <mat-icon>lock_open</mat-icon>
+    </span>
+    <span (click)="onSignIn()" [hidden]="estConnecte">
+    <mat-icon>lock</mat-icon>
+    </span>
+  </mat-toolbar>
+  <app-auth [hidden]="nonAffiche" (modelChange)="recupererIdentifiant($event)"></app-auth>
+</header>
+<p>{{ajd | date: 'd MMMM yyyy'}}</p>
+<router-outlet></router-outlet>

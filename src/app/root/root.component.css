@@ -1,0 +1,15 @@
+.fill-space {
+  flex: 1 1 auto;
+  justify-content: flex-start;
+}
+
+mat-toolbar {
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
+mat-toolbar > * {
+  margin-right: 4px;
+  margin-left: 4px;
+}
+

@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-card-title>
+    {{client.prenom | capitalize}} {{client.nom | uppercase}}
+  </mat-card-title>
+  <mat-card-content>
+    <div *ngIf="client != undefined && client.comptes; else pasDeCompte">
+      <mat-card-subtitle>Liste de compte :</mat-card-subtitle>
+      <mat-card *ngFor="let compte of client.comptes">
+        <p>{{compte.numero}} : {{compte.intitule}}</p>
+
+        <table mat-table [dataSource]="compte.operations" matSort >
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+            <td mat-cell *matCellDef="let operation"> {{operation.date}} </td>
+          </ng-container>
+          <ng-container matColumnDef="libelle">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Libelle </th>
+            <td mat-cell *matCellDef="let operation"> {{operation.libelle}} </td>
+          </ng-container>
+          <ng-container matColumnDef="montant">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Montant </th>
+            <td mat-cell *matCellDef="let operation"> {{operation.montant}} </td>
+          </ng-container>
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+            <td mat-cell *matCellDef="let operation"> {{operation.type}} </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+      </mat-card>
+    </div>
+    <ng-template #pasDeCompte>
+      <mat-card-subtitle>Aucun compte connu</mat-card-subtitle>
+    </ng-template>
+  </mat-card-content>
+  <!--<button mat-button (click)="supprimer()">Supprimer</button>-->
+
+</mat-card>

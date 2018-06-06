@@ -1,0 +1,7 @@
+mat-card {
+  margin: 10px;
+}
+
+td.mat-cell, th.mat-header-cell {
+  padding: 5px;
+}

@@ -1,0 +1,16 @@
+<h2>Nouveau client</h2>
+<form (submit)="enregistrer()" #clientForm="ngForm">
+  <mat-form-field>
+    <mat-label for="champ-nom">Nom</mat-label>
+    <input matInput id="champ-nom" #champNom="ngModel" name="champ-nom" required [(ngModel)]="nouveauClient.nom"
+    />
+    <mat-error [hidden]="!(champNom.touched && champNom.invalid)">Le nom est obligatoire</mat-error>
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+    <mat-label for="champ-prenom">Prénom</mat-label>
+    <input matInput id="champ-prenom" name="champ-prenom" [(ngModel)]="nouveauClient.prenom"/>
+  </mat-form-field>
+  <br/>
+  <button mat-button type="submit" [disabled]="clientForm.invalid">Enregistrer</button>
+</form>
